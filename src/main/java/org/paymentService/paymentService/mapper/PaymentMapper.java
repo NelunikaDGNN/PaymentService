@@ -2,7 +2,6 @@ package org.paymentService.paymentService.mapper;
 
 import org.paymentService.paymentService.models.Payment;
 import org.paymentService.paymentService.dto.PaymentDto;
-import org.paymentService.paymentService.dto.OrderDto;
 public class PaymentMapper {
 
     public static PaymentDto map(Payment payment){
@@ -10,11 +9,12 @@ public class PaymentMapper {
                 .paymentId(payment.getPaymentId())
                 .isPayed(payment.getIsPayed())
                .paymentStatus(payment.getPaymentStatus())
-                .orderDto(
-                            OrderDto.builder()
-                                    .orderID(payment.getOrderId())
-                                    .build()
-                )
+                .orderId(payment.getOrderId())
+//                .orderDto(
+//                            OrderDto.builder()
+//                                    .orderID(payment.getOrderId())
+//                                    .build()
+//                )
                 .build();
 
     }

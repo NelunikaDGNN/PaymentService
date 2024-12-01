@@ -3,9 +3,6 @@ package org.paymentService.paymentService.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
-
-
 @Entity
 @Table(name = "payments")
 @Data

@@ -41,14 +41,17 @@ public class PaymentController {
                 return ResponseEntity.ok(this.paymentService.create(paymentDto));
              }
 
+
     @PutMapping("/{paymentId}")
     public ResponseEntity<PaymentDto> update(
-            @RequestBody
-            @NotNull(message = "Input must not be null")
-            @Valid final PaymentDto paymentDto)
-             {
-                 return ResponseEntity.ok(this.paymentService.update(paymentDto));
-             }
+            @PathVariable("paymentId") Long paymentId,
+            @RequestBody @Valid final PaymentDto paymentDto) {
+        // Set the paymentId of the incoming DTO to match the URL parameter
+        paymentDto.setPaymentId(paymentId);
+
+        return ResponseEntity.ok(this.paymentService.update(paymentDto));
+    }
+
 
     @DeleteMapping("/{paymentId}")
     public ResponseEntity<Boolean> deleteById(
